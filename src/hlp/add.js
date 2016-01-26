@@ -1,16 +1,19 @@
 import stringify from '../util/stringify';
-import typify, { STRING, LIST, SET } from '../util/typify';
+import typify, { STRING, LIST, SET, BOOLEAN } from '../util/typify';
 
 export default function add( lefthand, righthand ) {
   const typeL = typify( lefthand );
   const typeR = typify( righthand );
 
   if ( typeL === STRING || typeR === STRING ) {
-    return stringify( lefthand ) + stringify( righthand );
+    return stringify( lefthand, false ) + stringify( righthand, false );
   }
 
   if ( typeL === typeR ) {
     switch( typeL ) {
+    case BOOLEAN:
+      throw new Error( stringify( lefthand ) + ' + ' stringify( righthand ) +
+        ' is undefined.');
     case LIST:
       return lefthand.concat(righthand);
     case SET:
@@ -21,5 +24,5 @@ export default function add( lefthand, righthand ) {
   }
 
   throw new Error('Righthandside of ' + stringify( lefthand ) + ' + ' +
-    stringify( righthand ) + `is not a ${ typeL } or string.`);
+    stringify( righthand ) + ` is not a ${ typeL } or string.`);
 }
