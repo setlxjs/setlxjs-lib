@@ -22,21 +22,14 @@ describe('util/stringify', () => {
   it('should convert lists', () => {
     stringify([true, 1, 'abc']).should.be.exactly('[true, 1, "abc"]');
     stringify([[1, 3], 3, 6]).should.be.exactly('[[1, 3], 3, 6]');
+    stringify([]).should.be.exactly('[]');
   });
 
   it('should convert sets', () => {
-    const set1 = new Set();
-    set1.add(true);
-    set1.add(1);
-    set1.add('abc');
+    const set1 = new Set([true, 1, 'abc']);
     stringify(set1).should.be.exactly('{true, 1, "abc"}');
-    const set2 = new Set();
-    const set3 = new Set();
-    set3.add(1);
-    set3.add(3);
-    set2.add(set3);
-    set2.add(3);
-    set2.add(6);
+    const set2 = new Set([new Set([1, 3]), 3, 6]);
     stringify(set2).should.be.exactly('{{1, 3}, 3, 6}');
+    stringify(new Set()).should.be.exactly('{}');
   });
 });
