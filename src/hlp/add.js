@@ -12,8 +12,8 @@ export default function add( lefthand, righthand ) {
   if ( typeL === typeR ) {
     switch( typeL ) {
     case BOOLEAN:
-      throw new Error( stringify( lefthand ) + ' + ' + stringify( righthand ) +
-        ' is undefined.');
+      throw new Error( '\'' + stringify( lefthand ) + ' + ' + stringify( righthand ) +
+        '\' is undefined.');
     case LIST:
       return lefthand.concat(righthand);
     case SET:

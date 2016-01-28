@@ -16,6 +16,8 @@ describe('hlp/add', () => {
   it('should unit two sets', () => {
     add(new Set([1, 3, 5]), new Set([2, 3, 4]))
       .should.eql(new Set([1, 2, 3, 4, 5]));
+
+    add(new Set([1]), new Set([1])).should.eql(new Set([1]));
   });
 
   it('should concat strings with other types', () => {
@@ -29,6 +31,6 @@ describe('hlp/add', () => {
     (() => add([1, 3, 5], new Set([5, 6]))).should.throw();
     (() => add([1, 3, 5], 6)).should.throw();
     (() => add(new Set(), 6)).should.throw();
-    (() => add(true, false)).should.throw();
+    (() => add(true, false)).should.throw('\'true + false\' is undefined.');
   });
 });
