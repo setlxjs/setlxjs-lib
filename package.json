@@ -4,7 +4,9 @@
   "description": "std and helper lib for Setlx.js",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/**/*.test.js",
+    "compile": "gulp",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
