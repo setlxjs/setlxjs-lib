@@ -1,7 +1,19 @@
-export default function range(start, end) {
-  const ret = [];
-  for (let i = start; i <= end; ++i) {
-    ret.push(i);
+import { Range } from 'immutable';
+
+class Wrapper {
+  constructor(range) {
+    this.range = range;
   }
-  return ret;
+
+  get set() {
+    return this.range.toSet();
+  }
+
+  get list() {
+    return this.range.toList();
+  }
+}
+
+export default function range(start, end, step) {
+  return new Wrapper(Range(start, end + 1, step));
 }
