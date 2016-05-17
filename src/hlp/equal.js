@@ -1,4 +1,5 @@
-import typify, { LIST } from '../util/typify';
+import Immutable from 'immutable';
+import typify, { LIST, SET } from '../util/typify';
 
 export default function equal(a, b) {
   const typeA = typify(a);
@@ -8,17 +9,8 @@ export default function equal(a, b) {
     return false;
   }
 
-  if (typeA === LIST) {
-    if (a.length !== b.length) {
-      return false;
-    }
-
-    for (let i = 0; i < a.length; ++i) {
-      if (!equal(a[i], b[i])) {
-        return false;
-      }
-    }
-    return true;
+  if (typeA === LIST || typeA === SET) {
+    return Immutable.is(a, b);
   }
 
   return a === b;

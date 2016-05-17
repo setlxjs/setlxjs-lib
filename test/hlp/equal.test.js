@@ -1,5 +1,6 @@
-require('should');
-const equal = require('../../dist/hlp/equal');
+import 'should';
+import { List, Set } from 'immutable';
+import equal from '../../src/hlp/equal';
 
 describe('hlp/equal', () => {
   it('should check for number equality', () => {
@@ -20,9 +21,18 @@ describe('hlp/equal', () => {
   });
 
   it('should check for list equality', () => {
-    equal([], [1]).should.not.be.ok();
-    equal([1, 2, 4], [1, 2, 3]).should.not.be.ok();
-    equal([], []).should.be.ok();
-    equal([1], [1]).should.be.ok();
+    equal(List(), List.of(1)).should.not.be.ok();
+    equal(List.of(1, 2, 4), List.of(1, 2, 3)).should.not.be.ok();
+    equal(List(), List()).should.be.ok();
+    equal(List.of(1), List.of(1)).should.be.ok();
+    equal(List.of(List.of(1), 2), List.of(List.of(1), 2)).should.be.ok();
+  });
+
+  it('should check for set equality', () => {
+    equal(Set(), Set.of(1)).should.not.be.ok();
+    equal(Set.of(1, 2, 4), Set.of(1, 2, 3)).should.not.be.ok();
+    equal(Set(), Set()).should.be.ok();
+    equal(Set.of(1), Set.of(1)).should.be.ok();
+    equal(Set.of(Set.of(1), 2), Set.of(Set.of(1), 2)).should.be.ok();
   });
 });
