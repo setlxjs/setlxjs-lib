@@ -10,11 +10,7 @@ export default function sub( lefthand, righthand ) {
   }
 
   if ( typeL === SET && typeR === SET ) {
-    let ret = new Set( lefthand );
-
-    righthand.forEach(elem => ret.delete( elem ));
-
-    return ret;
+    return lefthand.subtract(righthand);
   }
 
   throw new Error( '\'' + stringify( lefthand ) + ' - ' + stringify( righthand ) +
