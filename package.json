@@ -4,7 +4,7 @@
   "description": "std and helper lib for Setlx.js",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js",
+    "test": "mocha -r babel-register test/**/*.test.js",
     "compile": "gulp",
     "watch": "gulp watch"
   },
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/setlxjs/setlxjs-lib#readme",
   "devDependencies": {
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.8.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.3.0",
     "gulp-mocha": "^2.2.0",
