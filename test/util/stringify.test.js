@@ -1,4 +1,6 @@
-const stringify = require('../../dist/util/stringify');
+import 'should';
+import Immutable, { Set, List } from 'immutable';
+import stringify from '../../src/util/stringify';
 
 describe('util/stringify', () => {
   it('should convert strings', () => {
@@ -20,16 +22,16 @@ describe('util/stringify', () => {
   });
 
   it('should convert lists', () => {
-    stringify([true, 1, 'abc']).should.be.exactly('[true, 1, "abc"]');
-    stringify([[1, 3], 3, 6]).should.be.exactly('[[1, 3], 3, 6]');
-    stringify([]).should.be.exactly('[]');
+    stringify(List.of(true, 1, 'abc')).should.be.exactly('[true, 1, "abc"]');
+    stringify(Immutable.fromJS([[1, 3], 3, 6])).should.be.exactly('[[1, 3], 3, 6]');
+    stringify(List()).should.be.exactly('[]');
   });
 
   it('should convert sets', () => {
-    const set1 = new Set([true, 1, 'abc']);
+    const set1 = Set.of(true, 1, 'abc');
     stringify(set1).should.be.exactly('{true, 1, "abc"}');
-    const set2 = new Set([new Set([1, 3]), 3, 6]);
+    const set2 = Set.of(Set.of(1, 3), 3, 6);
     stringify(set2).should.be.exactly('{{1, 3}, 3, 6}');
-    stringify(new Set()).should.be.exactly('{}');
+    stringify(Set()).should.be.exactly('{}');
   });
 });
