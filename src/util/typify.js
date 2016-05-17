@@ -1,3 +1,5 @@
+import { Set, List } from 'immutable';
+
 export const STRING = 'string';
 export const NUMBER = 'number';
 export const LIST = 'list';
@@ -12,12 +14,10 @@ export const BOOLEAN = 'boolean';
 const typeMap = { 'string': STRING, 'number': NUMBER, 'boolean': BOOLEAN };
 
 export default function typify( value ) {
-  if ( typeof value === 'object' ) {
-    if ( value.constructor.name === 'Array' ) {
-      return LIST;
-    } else if ( value.constructor.name === 'Set' ) {
-      return SET;
-    }
+  if (List.isList(value)) {
+    return LIST;
+  } else if (Set.isSet(value)) {
+    return SET;
   }
   return typeMap[typeof value];
 }

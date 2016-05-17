@@ -1,31 +1,26 @@
-const types = require('../../dist/util/typify');
+import 'should';
+import typify, { STRING, NUMBER, BOOLEAN, LIST, SET } from '../../src/util/typify';
 
-const typify = types['default'];
-
-require('should');
+import { Set, List } from 'immutable';
 
 describe('util/typify', () => {
   it('should identify strings', () => {
-    typify('some string').should.be.exactly(types.STRING);
+    typify('some string').should.be.exactly(STRING);
   });
 
   it('should identify numbers', () => {
-    typify(28475).should.be.exactly(types.NUMBER);
+    typify(28475).should.be.exactly(NUMBER);
   });
 
   it('should identify booleans', () => {
-    typify(false).should.be.exactly(types.BOOLEAN);
+    typify(false).should.be.exactly(BOOLEAN);
   });
 
   it('should identify lists', () => {
-    typify([1, 'hi', []]).should.be.exactly(types.LIST);
+    typify(List.of(1, 'hi', true)).should.be.exactly(LIST);
   });
 
   it('should identify sets', () => {
-    const someSet = new Set();
-
-    someSet.add(1);
-    someSet.add(3);
-    typify(someSet).should.be.exactly(types.SET);
+    typify(Set.of(1, 3, 'hi')).should.be.exactly(SET);
   });
 });
