@@ -12,12 +12,12 @@ export default function add( lefthand, righthand ) {
   if ( typeL === typeR ) {
     switch( typeL ) {
     case BOOLEAN:
-      throw new Error( '\'' + stringify( lefthand ) + ' + ' + stringify( righthand ) +
+      throw new Error('\'' + stringify( lefthand ) + ' + ' + stringify( righthand ) +
         '\' is undefined.');
     case LIST:
       return lefthand.concat(righthand);
     case SET:
-      return new Set(Array.from(lefthand).concat(Array.from(righthand)));
+      return lefthand.union(righthand);
     default:
       return lefthand + righthand;
     }
