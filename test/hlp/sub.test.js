@@ -1,6 +1,4 @@
-import sub from '../../src/hlp/sub';
-import s from '../../src/hlp/s';
-import l from '../../src/hlp/l';
+const sub = require('../../dist/hlp/sub');
 
 describe('hlp/sub', () => {
   it('should substract two numbers', () => {
@@ -10,13 +8,12 @@ describe('hlp/sub', () => {
   });
 
   it('should substract two sets', () => {
-    sub(s(1, 3, 4), s(3, 4, 9, 12)).should.eql(s(1));
-    sub(s(1, 3, 4), s(3, 4, 9, 12)).should.eql(s(1));
+    sub(new Set([1, 3, 4]), new Set([3, 4, 9, 12])).should.eql(new Set([1]));
   });
 
   it('should throw on incompatible types', () => {
     (() => sub('str', 'str')).should.throw('\'"str" - "str"\' is undefined.');
     (() => sub(true, true)).should.throw('\'true - true\' is undefined.');
-    (() => sub(l(1, 2), l(2, 3))).should.throw();
+    (() => sub([1, 2], [2, 3])).should.throw();
   });
 });
