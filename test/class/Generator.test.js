@@ -34,4 +34,34 @@ describe('class/Generator', () => {
     sinon.assert.calledWith(spy, 2, 3);
     sinon.assert.calledWith(spy, 2, 4);
   });
+
+  it('every should return true if every call returns true', () => {
+    const fn = sinon.stub().returns(true);
+    const gen = new Generator([l(1, 2), l(3, 4)]);
+
+    gen.every(fn).should.be.ok();
+  });
+
+  it('every should return false if any call returns false', () => {
+    const fn = sinon.stub().returns(true);
+    const gen = new Generator([l(1, 2, 3, 4)]);
+    fn.onThirdCall().returns(false);
+
+    gen.every(fn).should.not.be.ok();
+  });
+
+  it('some should return false if every call returns false', () => {
+    const fn = sinon.stub().returns(false);
+    const gen = new Generator([l(1, 2), l(3, 4)]);
+
+    gen.some(fn).should.not.be.ok();
+  });
+
+  it('some should return true if any call returns true', () => {
+    const fn = sinon.stub().returns(false);
+    const gen = new Generator([l(1, 2, 3, 4)]);
+    fn.onThirdCall().returns(true);
+
+    gen.some(fn).should.be.ok();
+  });
 });

@@ -17,6 +17,14 @@ export default class Generator {
     return this;
   }
 
+  every(fn) {
+    return this.items.every(args => fn(...args));
+  }
+
+  some(fn) {
+    return this.items.some(args => fn(...args));
+  }
+
   get list() {
     return l(...this.items);
   }
