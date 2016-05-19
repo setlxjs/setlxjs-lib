@@ -5,4 +5,5 @@ export gen from './gen';
 export s from './s';
 export l from './l';
 export range from './range';
+export equal from './equal';
 export combinations from './combinations';
