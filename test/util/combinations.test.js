@@ -1,6 +1,6 @@
-require('should');
+import 'should';
 
-const combinations = require('../../dist/util/combinations');
+import combinations from '../../src/util/combinations';
 
 describe('util/combinations', () => {
   it('should make combinations of a single array', () => {
