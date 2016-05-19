@@ -2,7 +2,7 @@ export default function combinations(...iterators) {
   const last = iterators.pop();
 
   if (iterators.length === 0) {
-    return last.map(x => [x]);
+    return last.toArray().map(x => [x]);
   }
   const combs = combinations(...iterators);
   return combs
