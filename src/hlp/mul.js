@@ -9,6 +9,6 @@ export default function mul(lefthand, righthand) {
     return lefthand * righthand;
   }
 
-  throw new Error('\'' + stringify(lefthand) + ' - ' + stringify(righthand) +
+  throw new Error('\'' + stringify(lefthand) + ' * ' + stringify(righthand) +
     '\' is undefined.');
 }
