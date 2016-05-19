@@ -8,13 +8,13 @@ import typify, { LIST, SET, STRING } from './typify';
  * value to a string and be sure they have the correct Setlx toString
  * representation.
  */
-export default function stringify( value, quotationMarks = true ) {
-  const type = typify( value );
-  if ( type === LIST ) {
+export default function stringify(value, quotationMarks = true) {
+  const type = typify(value);
+  if (type === LIST) {
     return '[' + value.map(stringify).join(', ') + ']';
-  } else if ( type === SET ) {
-    return '{' + Array.from( value, stringify ).join(', ') + '}';
-  } else if ( type === STRING && quotationMarks ) {
+  } else if (type === SET) {
+    return '{' + value.map(stringify).join(', ') + '}';
+  } else if (type === STRING && quotationMarks) {
     return '"' + value + '"';
   }
 

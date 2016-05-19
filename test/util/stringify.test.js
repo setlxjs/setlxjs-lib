@@ -28,10 +28,8 @@ describe('util/stringify', () => {
   });
 
   it('should convert sets', () => {
-    const set1 = Set.of(true, 1, 'abc');
-    stringify(set1).should.be.exactly('{true, 1, "abc"}');
-    const set2 = Set.of(Set.of(1, 3), 3, 6);
-    stringify(set2).should.be.exactly('{{1, 3}, 3, 6}');
+    stringify(Set.of(true, 1, 'abc')).should.be.exactly('{true, 1, "abc"}');
+    stringify(Set.of(Set.of(1, 3), 3, 6)).should.be.exactly('{{1, 3}, 3, 6}');
     stringify(Set()).should.be.exactly('{}');
   });
 });
