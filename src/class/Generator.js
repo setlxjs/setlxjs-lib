@@ -1,24 +1,27 @@
 import combinations from '../util/combinations';
+import s from '../hlp/s';
+import l from '../hlp/l';
 
 export default class Generator {
   constructor(iterators) {
-    this.iterators = iterators;
-    this.filters = [];
+    this.items = combinations(...iterators.map(it => it.toArray()));
   }
 
-  list(mapper) {
-    let perms = combinations(...this.iterators);
-    perms = this.filters.reduce((p, filter) => p.filter(per => filter(...per)), perms);
-
-    return perms.map(p => mapper(...p));
-  }
-
-  set(mapper) {
-    return s(this.list(mapper));
-  }
-
-  filter(filter) {
-    this.filters.push(filter);
+  map(fn) {
+    this.items = this.items.map(args => fn(...args));
     return this;
+  }
+
+  filter(fn) {
+    this.items = this.items.filter(args => fn(...args));
+    return this;
+  }
+
+  get list() {
+    return l(...this.items);
+  }
+
+  get set() {
+    return s(...this.items);
   }
 }
