@@ -1,6 +1,6 @@
 import 'should';
 
-import combinations from '../../src/util/combinations';
+import combinations from '../../src/hlp/combinations';
 
 describe('util/combinations', () => {
   it('should make combinations of a single array', () => {

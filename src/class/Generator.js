@@ -1,4 +1,4 @@
-import combinations from '../util/combinations';
+import combinations from '../hlp/combinations';
 import s from '../hlp/s';
 import l from '../hlp/l';
 
