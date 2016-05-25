@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
-const mocha = require('gulp-mocha');
 
 const SRC_PATH = 'src/**/*.js';
 const DIST_PATH = 'dist/';
