@@ -1,13 +1,14 @@
 {
   "name": "setlxjs-lib",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "std and helper lib for Setlx.js",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha -r babel-register test/**/*.test.js",
     "compile": "gulp",
     "watch": "gulp watch",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "prepublish": "gulp"
   },
   "repository": {
     "type": "git",
