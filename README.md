@@ -2,3 +2,10 @@
 
 Programs compiled from SetlX to Javascript will eventually include some
 of the functions provided in this package.
+
+## Installation
+
+Install with npm:
+```
+npm install setlxjs-lib
+```
