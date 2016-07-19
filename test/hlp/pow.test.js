@@ -8,10 +8,9 @@ describe('hlp/pow', () => {
     pow(10, 3).should.eql(1000);
   });
 
-  it.only('should compute the power set', () => {
-    console.log(pow(Set.of(1, 2, 3), 2));
+  it('should compute the power set', () => {
     Immutable.is(
-      pow(Set.of(1, 2, 3), 2),
+      pow(2, Set.of(1, 2, 3)),
       Set.of(
         Set(),
         Set.of(1),

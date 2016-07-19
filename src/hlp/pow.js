@@ -20,8 +20,8 @@ function makePow(left, prev) {
  * Calculates the power of two numbers or the power set
  */
 export default function pow(lhs, rhs) {
-  if (typify(lhs) === SET && rhs === 2) {
-    return makePow(lhs, Set.of(Set()));
+  if (typify(rhs) === SET && lhs === 2) {
+    return makePow(rhs, Set.of(Set()));
   }
   if (typify(lhs) !== NUMBER) {
     throw new Error(`Left-hand-side of '${stringify(lhs)} ** ${stringify(rhs)}'` +
