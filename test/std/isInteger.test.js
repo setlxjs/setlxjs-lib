@@ -13,5 +13,6 @@ describe('std/isInteger', () => {
     isInteger(true).should.not.be.ok();
     isInteger(List.of(1, 2, 3)).should.not.be.ok();
     isInteger(Set.of(1, 2, 3)).should.not.be.ok();
+    isInteger(() => null).should.not.be.ok();
   });
 });

@@ -14,5 +14,6 @@ describe('std/isBoolean', () => {
     isBoolean(4).should.not.be.ok();
     isBoolean(List.of(1, 2, 3)).should.not.be.ok();
     isBoolean(Set.of(1, 2, 3)).should.not.be.ok();
+    isBoolean(() => null).should.not.be.ok();
   });
 });

@@ -15,5 +15,6 @@ describe('std/isSet', () => {
     isSet(4).should.not.be.ok();
     isSet(true).should.not.be.ok();
     isSet(List.of(1, 2, 3)).should.not.be.ok();
+    isSet(() => null).should.not.be.ok();
   });
 });
