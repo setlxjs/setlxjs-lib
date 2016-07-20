@@ -8,3 +8,7 @@ export range from './range';
 export equal from './equal';
 export combinations from './combinations';
 export pow from './pow';
+export lte from './lte';
+export gte from './gte';
+export gt from './gt';
+export lt from './lt';
