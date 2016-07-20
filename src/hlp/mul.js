@@ -1,4 +1,4 @@
-import typify, { NUMBER } from '../util/typify';
+import typify, { NUMBER, STRING, SET } from '../util/typify';
 import stringify from '../util/stringify';
 
 export default function mul(lefthand, righthand) {
@@ -7,6 +7,17 @@ export default function mul(lefthand, righthand) {
 
   if (typeL === NUMBER && typeR === NUMBER) {
     return lefthand * righthand;
+  }
+
+  if (typeL === NUMBER && typeR === STRING) {
+    return righthand.repeat(lefthand);
+  }
+  if (typeL === STRING && typeR === NUMBER) {
+    return lefthand.repeat(righthand);
+  }
+
+  if (typeL === SET && typeR === SET) {
+    return lefthand.intersect(righthand);
   }
 
   throw new Error('\'' + stringify(lefthand) + ' * ' + stringify(righthand) +
