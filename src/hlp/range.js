@@ -1,8 +1,8 @@
 import { Range } from 'immutable';
 
 class Wrapper {
-  constructor(range) {
-    this.range = range;
+  constructor(r) {
+    this.range = r;
   }
 
   get set() {
