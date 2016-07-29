@@ -1,4 +1,4 @@
-import typify, { OM, LIST, SET, STRING } from './typify';
+import typify, { OM, LIST, SET, STRING, NUMBER } from './typify';
 
 /**
  * This function converts values to Strings. In some cases the Javascript
@@ -14,6 +14,9 @@ export default function stringify(value, quotationMarks = true) {
     return '[' + value.map(stringify).join(', ') + ']';
   }
   if (type === SET) {
+    if (value.every(val => typify(val) === NUMBER)) {
+      return '{' + value.sort().map(stringify).join(', ') + '}';
+    }
     return '{' + value.map(stringify).join(', ') + '}';
   }
   if (type === STRING && quotationMarks) {
