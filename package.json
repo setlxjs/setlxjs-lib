@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha -r babel-register test/**/*.test.js",
-    "compile": "gulp",
+    "build": "gulp",
     "watch": "gulp watch",
     "lint": "eslint src/",
     "prepublish": "gulp"
