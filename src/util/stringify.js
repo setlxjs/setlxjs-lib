@@ -19,7 +19,7 @@ export default function stringify(value, quotationMarks = true) {
     }
     return '{' + value.map(stringify).join(', ') + '}';
   }
-  if (type === STRING && quotationMarks) {
+  if (type === STRING && quotationMarks !== false) {
     return '"' + value + '"';
   }
   if (type === OM) {
